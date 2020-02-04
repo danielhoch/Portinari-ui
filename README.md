@@ -9,5 +9,5 @@ Portinari é um framework desenvolvido e disponibilizado pela empresa Totvs S/A.
 - NodeJs v10.16.0
 
 ### IDE de desenvolvimento
-- VisualCode
+- Visual Studio Code
 
