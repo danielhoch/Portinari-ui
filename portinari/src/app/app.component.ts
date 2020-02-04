@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { PoMenuItem } from '@portinari/portinari-ui';
+
+import { AuthService } from './authorization/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +16,25 @@ export class AppComponent {
     { label: 'Configurações', action: this.onClick2.bind(this) }
   ];
 
+  mostrarMenu = false;
+
+  constructor(private authService: AuthService,
+              private router: Router) {}
+
+  ngOnInit(): void {
+    this.authService.mostrarMenuEmitter.subscribe(arg => this.mostrarMenu = arg);
+  }
+
   private onClick() {
     alert('Clicked in menu item')
   }
 
   private onClick2() {
     alert('Clicked in menu Configurações')
+  }
+
+  sair(): void {
+    this.router.navigate(['/login']);
   }
 
 }

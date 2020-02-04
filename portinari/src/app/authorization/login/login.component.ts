@@ -1,5 +1,9 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { PoPageLoginLiterals } from '@portinari/portinari-templates';
+import { PoPageLoginLiterals, PoPageLogin } from '@portinari/portinari-templates';
+
+import { AuthService } from './../auth.service';
+import { UsuarioDTO } from './../../models/usuario.dto';
 
 @Component({
   selector: 'login',
@@ -9,15 +13,18 @@ import { PoPageLoginLiterals } from '@portinari/portinari-templates';
 export class LoginComponent implements OnInit {
 
   customLiterals: PoPageLoginLiterals;
-  login: string;
+  usuario: UsuarioDTO = new UsuarioDTO();
 
-  constructor() { }
+  constructor(private autService: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
   }
 
-  loginSubmit(credenciais) {
+  loginSubmit(formData: PoPageLogin) {
 
-    console.log(credenciais);
+    this.usuario.nome = formData.login;
+    this.usuario.senha = formData.password;
+    this.autService.fazerLogin(this.usuario);
   }
 }

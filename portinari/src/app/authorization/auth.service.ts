@@ -16,7 +16,9 @@ export class AuthService {
 
   }
 
-  fazerLogin(usuario: UsuarioDTO){
+  fazerLogin(usuario: UsuarioDTO) {
+
+    console.log(usuario);
 
     if (usuario.nome === 'usuario@email.com' && usuario.senha === '123456') {
 
