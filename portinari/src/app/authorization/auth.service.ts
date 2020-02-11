@@ -20,13 +20,13 @@ export class AuthService {
 
     console.log(usuario);
 
-    if (usuario.nome === 'usuario@email.com' && usuario.senha === '123456') {
+    if (usuario.nome === 'usuario@email.com' && usuario.senha === '123') {
 
       this.usuarioAutenticado = true;
 
       this.mostrarMenuEmitter.emit(true);
 
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     } else {
       this.usuarioAutenticado = false;
 
@@ -36,5 +36,12 @@ export class AuthService {
 
   usuarioEstaAutenticado() {
    return this.usuarioAutenticado;
+  }
+
+  fazerLogout() {
+
+    this.usuarioAutenticado = false;
+    this.mostrarMenuEmitter.emit(false);
+    this.router.navigate(['/login']);
   }
 }

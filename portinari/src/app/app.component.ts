@@ -26,11 +26,11 @@ export class AppComponent {
   }
 
   private onClick() {
-    alert('Clicked in menu item')
+    this.router.navigate(['/home']);
   }
 
   private onClick2() {
-    alert('Clicked in menu Configurações')
+    this.router.navigate(['/configuracoes']);
   }
 
   sair(): void {
